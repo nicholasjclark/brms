@@ -17,15 +17,15 @@ RUN apt-get clean \
 
 RUN R -e "options(repos = \
   list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/${WHEN}')); \
-  dotR <- file.path(Sys.getenv("HOME"), ".R") \
-  if (!file.exists(dotR)) dir.create(dotR) \
-  M <- file.path(dotR, "Makevars") \
-  if (!file.exists(M)) file.create(M) \
+  dotR <- file.path(Sys.getenv("HOME"), ".R"); \
+  if (!file.exists(dotR)) dir.create(dotR); \
+  M <- file.path(dotR, "Makevars"); \
+  if (!file.exists(M)) file.create(M); \
   cat("\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC", \
   "CXX14=clang++", \
-  file = M, sep = "\n", append = TRUE) \
-  install.packages("rstan", type = "source") \
-  install.packages('remotes') \
+  file = M, sep = "\n", append = TRUE); \
+  install.packages("rstan", type = "source"); \
+  install.packages('remotes'); \
   remotes::install_github('asael697/varstan', dependencies = TRUE)"
 
 # install the other packages for brms
