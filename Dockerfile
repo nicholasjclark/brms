@@ -16,7 +16,7 @@ RUN apt-get clean \
 # following the instructions at https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
 
 RUN R -e "options(repos = \
-  list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/${WHEN}')); \
+  list(CRAN = 'https://mran.revolutionanalytics.com/snapshot/2021-02-01/')); \
   dotR <- file.path(Sys.getenv('HOME'), '.R'); \
   if (!file.exists(dotR)) dir.create(dotR); \
   M <- file.path(dotR, 'Makevars'); \
