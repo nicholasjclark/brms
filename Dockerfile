@@ -38,6 +38,10 @@ RUN R -e "options(repos = \
   install.packages('ggplot2'); \
   install.packages('viridis'); \
   install.packages('reshape'); \
+  remotes::install_github('tsmodels/tsmethods', dependencies = TRUE); \
+  remotes::install_github('tsmodels/tsaux', dependencies = TRUE); \
+  remotes::install_github('tsmodels/tets', dependencies = TRUE); \
+  remotes::install_github('tsmodels/tvets', dependencies = TRUE); \
   remotes::install_github('asael697/varstan@5378f428cad9560dae7f6daf8f431113f19a2019', dependencies = TRUE)"
 
 CMD [ "R" ]
