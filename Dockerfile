@@ -27,8 +27,6 @@ RUN R -e "options(repos = \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('remotes'); \
-  install.packages('forecast'); \
-  install.packages('thief'); \
   install.packages('brms'); \
   install.packages('here'); \
   install.packages('tidybayes'); \
