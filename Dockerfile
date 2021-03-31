@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Create a makevars file and install rstan from source
+# Create a makevars file and then install rstan from source
 # following the instructions at https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
 # Install remaining R packages using specific versions (latest as of February 2021 or using specific commits on Github)
 RUN R -e "options(repos = \
