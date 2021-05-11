@@ -1,5 +1,14 @@
 FROM lcolling/r-verse-base:latest
 
+# Install `curl` and `jags` c libraries
+RUN apt-get update && apt-get install -y curl 
+RUN apt-get update && apt-get install -y jags
+
+RUN apt-get update \
+    && apt-get install -y \
+       curl \
+       jags
+       
 # Use clang to compile Stan
 # Using the default g++ causes memory issues
 RUN apt-get update \
@@ -28,6 +37,11 @@ RUN R -e "options(repos = \
   install.packages('rstan', type = 'source'); \
   install.packages('remotes'); \
   install.packages('brms'); \
+  install.packages('rjags'); \
+  install.packages('MCMCpack'); \
+  install.packages('runjags'); \
+  install.packages('MCMCglmm'); \
+  install.packages('portalcasting'); \
   install.packages('here'); \
   install.packages('tidybayes'); \
   install.packages('xfun'); \
