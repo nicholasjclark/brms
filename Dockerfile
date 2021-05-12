@@ -56,7 +56,6 @@ RUN R -e "options(repos = \
   remotes::install_github('tsmodels/tsets@51a26d80fdfafc41d564d08a38fe4c9776ba333f', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsvets@7bea965911ddee0c585199cb380b1299e341273b', dependencies = TRUE); \
   remotes::install_github('nicholasjclark/mvforecast', dependencies = TRUE); \
-  remotes::install_github('asael697/varstan@5378f428cad9560dae7f6daf8f431113f19a2019', dependencies = TRUE); \ 
-  remotes::install_github('weecology/portalcasting@6faf4c89df2ee686636bd96a535202530fd93acf', dependencies = TRUE)"
+  remotes::install_github('asael697/varstan@5378f428cad9560dae7f6daf8f431113f19a2019', dependencies = TRUE)"
 
 CMD [ "R" ]
