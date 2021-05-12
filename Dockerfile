@@ -8,21 +8,8 @@ RUN apt-get update \
     && apt-get install -y \
        curl \
        jags
-       
-# Use clang to compile Stan
-# Using the default g++ causes memory issues
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    clang
 
-RUN apt-get install -y --no-install-recommends libudunits2-dev
-RUN apt-get install -y --no-install-recommends libgdal-dev
-RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
-
-RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Create a makevars file and install rstan from source
+# Create a makevars file
 # following the instructions at https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
 # Install remaining R packages using specific versions (latest as of Feb 2021, or by indexing specific commits on Github)
 RUN R -e "options(repos = \
@@ -34,18 +21,14 @@ RUN R -e "options(repos = \
   cat('\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC', \
   'CXX14=clang++', \
   file = M, sep = '\n', append = TRUE); \
-  install.packages('rstan', type = 'source'); \
   install.packages('remotes'); \
-  install.packages('brms'); \
   install.packages('rjags'); \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
   install.packages('MCMCglmm'); \
   install.packages('here'); \
-  install.packages('tidybayes'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
-  install.packages('prophet'); \
   install.packages('pbapply'); \
   install.packages('ggplot2'); \
   install.packages('viridis'); \
@@ -55,7 +38,6 @@ RUN R -e "options(repos = \
   remotes::install_github('tsmodels/tsaux@da46a751c619ba10184f0749ccd7d9fb9a7be31f', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsets@51a26d80fdfafc41d564d08a38fe4c9776ba333f', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsvets@7bea965911ddee0c585199cb380b1299e341273b', dependencies = TRUE); \
-  remotes::install_github('nicholasjclark/mvforecast', dependencies = TRUE); \
-  remotes::install_github('asael697/varstan@5378f428cad9560dae7f6daf8f431113f19a2019', dependencies = TRUE)"
+  remotes::install_github('nicholasjclark/mvforecast', dependencies = TRUE)"
 
 CMD [ "R" ]
