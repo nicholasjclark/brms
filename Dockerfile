@@ -35,11 +35,11 @@ RUN R -e "options(repos = \
   'CXX14=clang++', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
-  install.packages('remotes'); \
   install.packages('rjags'); \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
   install.packages('MCMCglmm'); \
+  install.packages('remotes'); \
   install.packages('here'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
