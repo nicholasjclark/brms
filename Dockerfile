@@ -38,9 +38,9 @@ RUN R -e "options(repos = \
   install.packages('rjags'); \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
-  install.packages('MCMCglmm'); \
   install.packages('remotes'); \
   install.packages('here'); \
+  install.packages('MCMCglmm'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
   install.packages('pbapply'); \
