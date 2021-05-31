@@ -36,6 +36,7 @@ RUN R -e "options(repos = \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('rjags'); \
+  install.packages('reshape'); \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
   install.packages('remotes'); \
@@ -46,7 +47,6 @@ RUN R -e "options(repos = \
   install.packages('pbapply'); \
   install.packages('ggplot2'); \
   install.packages('ProbReco'); \
-  install.packages('reshape'); \
   install.packages('viridis'); \
   remotes::install_github('tsmodels/tsmethods@16601e3bd21d7293490d820137324e4f16462dbf', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsaux@da46a751c619ba10184f0749ccd7d9fb9a7be31f', dependencies = TRUE); \
