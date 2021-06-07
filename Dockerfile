@@ -43,11 +43,11 @@ RUN R -e "options(repos = \
   install.packages('MCMCglmm'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
-  install.packages('pbapply'); \
   install.packages('ggplot2'); \
   install.packages('ProbReco'); \
   install.packages('remotes'); \
   install.packages('viridis'); \
+  install.packages('pbapply'); \
   remotes::install_github('robjhyndman/forecast@f0965d594a23fa90b3b56152f52f3a5fbc5240e9', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsmethods@16601e3bd21d7293490d820137324e4f16462dbf', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsaux@da46a751c619ba10184f0749ccd7d9fb9a7be31f', dependencies = TRUE); \
