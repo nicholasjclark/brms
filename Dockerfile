@@ -43,8 +43,8 @@ RUN R -e "options(repos = \
   install.packages('here'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
-  install.packages('ggplot2'); \
   install.packages('ProbReco'); \
+  install.packages('ggplot2'); \
   install.packages('remotes'); \
   install.packages('viridis'); \
   install.packages('pbapply'); \
