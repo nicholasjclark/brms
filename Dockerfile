@@ -7,13 +7,14 @@ RUN apt-get update && apt-get install -y jags
 RUN apt-get update \
     && apt-get install -y \
        curl \
-       jags
+       jags \
+       g++
        
 # Use clang to compile Stan
 # Using the default g++ causes memory issues
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    clang
+# RUN apt-get update \
+#     && apt-get install -y --no-install-recommends \
+#    clang
 
 RUN apt-get install -y --no-install-recommends libudunits2-dev
 RUN apt-get install -y --no-install-recommends libgdal-dev
@@ -31,8 +32,8 @@ RUN R -e "options(repos = \
   if (!file.exists(dotR)) dir.create(dotR); \
   M <- file.path(dotR, 'Makevars'); \
   if (!file.exists(M)) file.create(M); \
-  cat('\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC', \
-  'CXX14=clang++', \
+  cat('\nCXX14FLAGS=-O3 -mtune=native', \
+  'CXX111FLAGS=-03 -mtune=native', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('reshape'); \
