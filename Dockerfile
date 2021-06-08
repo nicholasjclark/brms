@@ -35,12 +35,12 @@ RUN R -e "options(repos = \
   'CXX14=clang++', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
-  install.packages('rjags'); \
   install.packages('reshape'); \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
-  install.packages('here'); \
+  install.packages('rjags'); \
   install.packages('MCMCglmm'); \
+  install.packages('here'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
   install.packages('ggplot2'); \
