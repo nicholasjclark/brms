@@ -39,8 +39,8 @@ RUN R -e "options(repos = \
   install.packages('MCMCpack'); \
   install.packages('runjags'); \
   install.packages('rjags'); \
-  install.packages('here'); \
   install.packages('MCMCglmm'); \
+  install.packages('here'); \
   install.packages('xfun'); \
   install.packages('mgcv'); \
   install.packages('ggplot2'); \
