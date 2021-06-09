@@ -1,12 +1,14 @@
 #FROM lcolling/r-verse-base:latest
 FROM rocker/r-ver:4.1.0
 
-# Install `curl` and `jags` c libraries
+# Install necessary libraries for jags and the laundry list of tsmethods dependencies
 RUN apt-get update \
     && apt-get install -y \
        libcurl4-openssl-dev \
        libfontconfig1-dev \
+       libudunits2-dev \
        zlib1g-dev \
+       libxml2-dev \
        jags
        
 # Use clang to compile Stan
@@ -14,10 +16,6 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     clang
-    
-    #libudunits2-dev \ 
-    #libgdal-dev \ 
-    #libv8-dev
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
