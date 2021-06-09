@@ -1,5 +1,5 @@
 # FROM lcolling/r-verse-base:latest
-FROM rocker/r-ubuntu:20.10
+FROM rocker/tidyverse:latest
 
 # Install `curl` and `jags` c libraries
 RUN apt-get update \
