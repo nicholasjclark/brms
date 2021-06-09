@@ -1,9 +1,7 @@
-FROM lcolling/r-verse-base:latest
+# FROM lcolling/r-verse-base:latest
+FROM: rocker/r-bspm:20.10
 
 # Install `curl` and `jags` c libraries
-RUN apt-get update && apt-get install -y curl 
-RUN apt-get update && apt-get install -y jags
-
 RUN apt-get update \
     && apt-get install -y \
        curl \
@@ -16,9 +14,9 @@ RUN apt-get update \
 #     && apt-get install -y --no-install-recommends \
 #    clang
 
-RUN apt-get install -y --no-install-recommends libudunits2-dev
-RUN apt-get install -y --no-install-recommends libgdal-dev
-RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
+#RUN apt-get install -y --no-install-recommends libudunits2-dev
+#RUN apt-get install -y --no-install-recommends libgdal-dev
+#RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
