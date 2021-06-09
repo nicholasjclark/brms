@@ -1,5 +1,5 @@
 #FROM lcolling/r-verse-base:latest
-FROM rocker/verse:latest
+FROM rocker/r-ver:4.1.0
 
 # Install `curl` and `jags` c libraries
 RUN apt-get update \
