@@ -1,12 +1,11 @@
 # FROM lcolling/r-verse-base:latest
-FROM: rocker/r-bspm:20.10
+FROM rocker/r-ubuntu:20.10
 
 # Install `curl` and `jags` c libraries
 RUN apt-get update \
     && apt-get install -y \
        curl \
-       jags \
-       g++
+       jags
        
 # Use clang to compile Stan
 # Using the default g++ causes memory issues
