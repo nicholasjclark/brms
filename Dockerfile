@@ -22,9 +22,9 @@ RUN apt-get clean \
 
 # Create a makevars file and then install rstan from source
 # following the instructions at https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
-# Install remaining R packages using specific versions (latest as of Feb 2021, or by indexing specific commits on Github)
+# Install remaining R packages using specific versions (latest as of Feb 15 2021, or by indexing specific commits on Github)
 RUN R -e "options(repos = \
-  list(CRAN = 'https://mran.revolutionanalytics.com/snapshot/2021-02-01/')); \
+  list(CRAN = 'https://mran.revolutionanalytics.com/snapshot/2021-02-15/')); \
   dotR <- file.path(Sys.getenv('HOME'), '.R'); \
   if (!file.exists(dotR)) dir.create(dotR); \
   M <- file.path(dotR, 'Makevars'); \
