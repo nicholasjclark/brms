@@ -1,5 +1,4 @@
-# FROM lcolling/r-verse-base:latest
-FROM rocker/tidyverse:latest
+FROM lcolling/r-verse-base:latest
 
 # Install `curl` and `jags` c libraries
 RUN apt-get update \
@@ -9,13 +8,12 @@ RUN apt-get update \
        
 # Use clang to compile Stan
 # Using the default g++ causes memory issues
-# RUN apt-get update \
-#     && apt-get install -y --no-install-recommends \
-#    clang
-
-#RUN apt-get install -y --no-install-recommends libudunits2-dev
-#RUN apt-get install -y --no-install-recommends libgdal-dev
-#RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    clang \
+    libudunits2-dev \ 
+    libgdal-dev \ 
+    libv8-dev
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -30,7 +28,7 @@ RUN R -e "options(repos = \
   M <- file.path(dotR, 'Makevars'); \
   if (!file.exists(M)) file.create(M); \
   cat('\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC', \
-  'CXX14=g++', \
+  'CXX14=clang', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('reshape'); \
