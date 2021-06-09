@@ -33,7 +33,7 @@ RUN R -e "options(repos = \
   M <- file.path(dotR, 'Makevars'); \
   if (!file.exists(M)) file.create(M); \
   cat('\nCXX14FLAGS=-O3 -mtune=native', \
-  'CXX111FLAGS=-03 -mtune=native', \
+  'CXX11FLAGS=-03 -mtune=native', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('reshape'); \
