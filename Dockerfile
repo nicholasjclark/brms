@@ -32,9 +32,8 @@ RUN R -e "options(repos = \
   if (!file.exists(dotR)) dir.create(dotR); \
   M <- file.path(dotR, 'Makevars'); \
   if (!file.exists(M)) file.create(M); \
-  cat('\nCXX14FLAGS=-03 -march=native -mtune=native -fPIC', \
+  cat('\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC', \
   'CXX14=g++', \
-  'CXX11FLAGS=-03 -mtune=native', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('reshape'); \
