@@ -7,6 +7,7 @@ RUN apt-get update \
        libcurl4-openssl-dev \
        libfontconfig1-dev \
        libudunits2-dev \
+       libcairo2-dev \
        zlib1g-dev \
        libxml2-dev \
        jags
