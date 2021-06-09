@@ -5,6 +5,7 @@ FROM rocker/r-ver:4.1.0
 RUN apt-get update \
     && apt-get install -y \
        libcurl4-openssl-dev \
+       zlib1g-dev \
        jags
        
 # Use clang to compile Stan
