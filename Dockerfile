@@ -13,6 +13,7 @@ RUN apt-get update \
        libcairo2-dev \
        zlib1g-dev \
        libxml2-dev \
+       libv8-dev \
        jags
        
 # Use clang to compile Stan
