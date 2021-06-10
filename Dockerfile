@@ -4,8 +4,8 @@ FROM rocker/r-ver:4.1.0
 # Install necessary libraries for jags and the laundry list of tsmethods dependencies
 RUN apt-get update \
     && apt-get install -y \
-       libtcl-dev \
-       libtk-dev \
+       tcl-dev \
+       tk-dev \
        libcurl4-openssl-dev \
        libssl-dev \
        libfontconfig1-dev \
