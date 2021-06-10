@@ -5,6 +5,7 @@ FROM rocker/r-ver:4.1.0
 RUN apt-get update \
     && apt-get install -y \
        libcurl4-openssl-dev \
+       libssl-dev \
        libfontconfig1-dev \
        libudunits2-dev \
        libcairo2-dev \
