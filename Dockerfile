@@ -1,39 +1,41 @@
-FROM lcolling/r-verse-base:latest
+#FROM lcolling/r-verse-base:latest
+FROM rocker/r-ver:4.1.0
 
-# Install `curl` and `jags` c libraries
-RUN apt-get update && apt-get install -y curl 
-RUN apt-get update && apt-get install -y jags
-
+# Install necessary libraries for jags and the laundry list of tsmethods dependencies
 RUN apt-get update \
     && apt-get install -y \
-       curl \
-       jags \
-       g++
+       tcl-dev \
+       tk-dev \
+       libcurl4-openssl-dev \
+       libssl-dev \
+       libfontconfig1-dev \
+       libudunits2-dev \
+       libcairo2-dev \
+       zlib1g-dev \
+       libxml2-dev \
+       libv8-dev \
+       jags
        
 # Use clang to compile Stan
 # Using the default g++ causes memory issues
-# RUN apt-get update \
-#     && apt-get install -y --no-install-recommends \
-#    clang
-
-RUN apt-get install -y --no-install-recommends libudunits2-dev
-RUN apt-get install -y --no-install-recommends libgdal-dev
-RUN apt-get update && apt-get install -y --no-install-recommends libv8-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    clang
 
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a makevars file and then install rstan from source
 # following the instructions at https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Linux
-# Install remaining R packages using specific versions (latest as of Feb 2021, or by indexing specific commits on Github)
+# Install remaining R packages using specific versions (latest as of Feb 15 2021, or by indexing specific commits on Github)
 RUN R -e "options(repos = \
-  list(CRAN = 'https://mran.revolutionanalytics.com/snapshot/2021-02-01/')); \
+  list(CRAN = 'https://mran.revolutionanalytics.com/snapshot/2021-02-15/')); \
   dotR <- file.path(Sys.getenv('HOME'), '.R'); \
   if (!file.exists(dotR)) dir.create(dotR); \
   M <- file.path(dotR, 'Makevars'); \
   if (!file.exists(M)) file.create(M); \
   cat('\nCXX14FLAGS=-O3 -march=native -mtune=native -fPIC', \
-  'CXX14=g++', \
+  'CXX14=clang++', \
   file = M, sep = '\n', append = TRUE); \
   install.packages('rstan', type = 'source'); \
   install.packages('reshape'); \
@@ -43,9 +45,9 @@ RUN R -e "options(repos = \
   install.packages('MCMCglmm'); \
   install.packages('here'); \
   install.packages('xfun'); \
+  install.packages('remotes'); \
   install.packages('mgcv'); \
   install.packages('ProbReco'); \
-  install.packages('remotes'); \
   install.packages('viridis'); \
   install.packages('pbapply'); \
   install.packages('ggplot2'); \
