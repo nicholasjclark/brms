@@ -56,6 +56,7 @@ RUN R -e "options(repos = \
   remotes::install_github('tsmodels/tsaux@da46a751c619ba10184f0749ccd7d9fb9a7be31f', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsets@51a26d80fdfafc41d564d08a38fe4c9776ba333f', dependencies = TRUE); \
   remotes::install_github('tsmodels/tsvets@7bea965911ddee0c585199cb380b1299e341273b', dependencies = TRUE); \
-  remotes::install_github('nicholasjclark/mvforecast', dependencies = TRUE)"
+  remotes::install_github('nicholasjclark/mvforecast', dependencies = TRUE); \
+  remotes::install_github('nicholasjclark/mvgam', dependencies = TRUE)"
 
 CMD [ "R" ]
